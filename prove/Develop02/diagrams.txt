@@ -1,0 +1,57 @@
+NONE OF THIS IS RIGHT BUT I DON'T REMEMBER HOW IT IS SUPOST TO BE AND IT IS NOT POSTED IN CANVAS. SORRY I AM REALLY TIERED AND CAN'T DEAL WITH THIS
+
+Object Journal
+-----------
+Store, Loads, and "Displays" entries
+-----------
+List<entries>
+-----
+toString
+toCSV
+fromCSV
+
+
+
+Object Entry
+-----------
+Store, Loads, and "Displays" the promt, date and response 
+-----------
+string promt
+string date
+string response
+-----
+toString()
+toCSV
+fromCSV
+
+
+
+Class Journal
+--------------
+List<Entry> Entries = new List<Entry>();
+--------------
+toString(): string
+toCSV(): string (but formated for a CSV)
+
+
+Class Entry
+-----------
+getPromt(): string
+getDate(): string
+getResponse: string
+-----
+toString()
+toCSV
+fromCSV
+
+
+Loading/Saving
+Will be done through CSVs
+
+
+Promt Generation
+Will come from a list with a random number generator
+
+
+Interations
+It will all interate through the Program class and the main function
