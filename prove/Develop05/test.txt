@@ -1,0 +1,4 @@
+1363
+SimpleGoal:asdf,asdfadsf,234,True
+EternalGoal:asdfieje,nnandnikansdfa,77
+CheckListGoal:nonlakdfa,ppqkofoasdnikanigrn,88,700,4,4
