@@ -53,14 +53,10 @@ public class Entity
         _imHealth = _imHealth - damage;
     }
 
-    public void _ImLevelUp()
+    public virtual void _ImLevelUp()
     {
         _imLevel = _imLevel + 1;
     }
 
 }
-/*
-khanalaa's stuff. I didn't want to delete it when it merged if it is important.
-    iiijij
-}
-*/
+

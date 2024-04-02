@@ -1,7 +1,6 @@
 public class Undead : Entity
 {
-    // Class States
-    //
+    // Class Statesybtg
 
     // Class Constructors
     public Undead(int level) : base()
