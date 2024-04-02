@@ -59,3 +59,8 @@ public class Entity
     }
 
 }
+/*
+khanalaa's stuff. I didn't want to delete it when it merged if it is important.
+    iiijij
+}
+*/
