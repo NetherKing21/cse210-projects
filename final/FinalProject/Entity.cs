@@ -1,4 +1,4 @@
-public class Entity
+public abstract class Entity
 {
     // Class States
     protected string _imName;
@@ -8,8 +8,7 @@ public class Entity
     protected int _imSpeedStat;
     protected int _imArmorStat;
     protected int _imGold;
-
-    //List<Action> _imActions = new List<Action>();
+    List<Action> _imActions = new List<Action>();
 
     // Class Constructors
     public Entity()
@@ -37,17 +36,16 @@ public class Entity
     {
         return _imHealth; 
     }
- 
-    /*
-    ^^ Those or this ->
 
-    string _ImToString()
+    public int GetStrength()
     {
-        return fancy string formatting
+        return _imStrengthStat; 
     }
-    */
+    public int GetSpeed()
+    {
+        return _imSpeedStat; 
+    }
 
-    // I don't know if this should this be abstract?? Hmmm...
     public void _ImTakeDamage(int damage)
     {
         _imHealth = _imHealth - damage;
@@ -58,5 +56,6 @@ public class Entity
         _imLevel = _imLevel + 1;
     }
 
+    public abstract void bmTakeAction();
 }
 

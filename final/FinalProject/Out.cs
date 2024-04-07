@@ -1,5 +1,6 @@
 public class Out
 {
+    /*
     public static void bmDisplayStartScreen()
     {
         string[] options = {"Load Game", "New Game", "Quit"};
@@ -9,4 +10,14 @@ public class Out
             Console.WriteLine($" {i+1}. {options[i]}");
         }
     }
+
+    public static void bmDisplayPlayerActions(Player player)
+    {
+        Console.WriteLine("What action would you like to take? ");
+        foreach()
+        {
+            
+        }
+    }
+    */
 }

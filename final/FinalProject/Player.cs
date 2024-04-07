@@ -31,4 +31,12 @@ public class Player : Entity
     }
 
     // Additional methods can be added here
+    public override void bmTakeAction()
+    {
+        // Display players actions
+
+        // Get users input
+
+        // Call that action effect
+    }
 }
