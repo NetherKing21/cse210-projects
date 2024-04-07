@@ -32,7 +32,7 @@ public class Ranger : Player
     // {
     //     // Placeholder logic for shooting an arrow
     //     int damage = _akStat; // For simplicity, assume dexterity stat is directly added as damage
-    //     target.TakeDamage(damage);
+    //     target.InTakeDamage(damage);
     // }
 
 }

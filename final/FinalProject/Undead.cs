@@ -41,4 +41,11 @@ public class Undead : Entity
         }
     }
 
+    // edited by ak
+    public override void bmTakeAction()
+    {
+        // Implement the logic for the Beast's action here
+        Console.WriteLine("The Beast takes action.");
+    }
+
 }
