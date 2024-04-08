@@ -1,3 +1,4 @@
+
 public class Undead : Entity
 {
     // Class State
@@ -39,6 +40,15 @@ public class Undead : Entity
             _imGold = 10;
 
         }
+    }
+
+    public override void bmTakeAction(List<Entity> entities)
+    {
+        //Chose a random number with the max number being the length of _imActions
+
+        //Set random target from entities (should be the party list in Combat !!Combat need to be updated to change which list in given based on which entity is taking its action)
+
+        //Call action.effect
     }
 
 }

@@ -1,3 +1,5 @@
+using System.Reflection.Metadata;
+
 public class Player : Entity
 {
     private List<string> _inventory;
@@ -31,12 +33,15 @@ public class Player : Entity
     }
 
     // Additional methods can be added here
-    public override void bmTakeAction()
+    public override void bmTakeAction(List<Entity> entities)
     {
         // Display players actions
-
+        Out.bmDisplayActions(_imActions);
         // Get users input
-
+        int ui = In.bmGetUserInput(_imActions.Count()) - 1;
+        // Set target
+        _imActions[ui].SetTarget(entities);
         // Call that action effect
+        _imActions[ui].Effect();
     }
 }
