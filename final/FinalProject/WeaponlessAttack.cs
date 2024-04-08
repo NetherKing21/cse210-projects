@@ -8,7 +8,6 @@ public class WeaponlessAttack : Action
     public WeaponlessAttack() 
     {
         _actionName = "Punch";
-        _description = "You punch someone";
     }
 
     //Methods
@@ -19,6 +18,8 @@ public class WeaponlessAttack : Action
         {
             target._ImTakeDamage(damage);
         }
+        _description = $"{_user.GetName()} punched {_target[0].GetName()}";
+        Out.bmActionMessage(_description);
     }
 
     public override void SetTarget(List<Entity> entities)
