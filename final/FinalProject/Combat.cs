@@ -2,17 +2,17 @@ using System;
 using System.Collections;
 using System.Net;
 
-class Combat
+class Combat : Event
 {
     // Attributes
     private static List<Entity> _bmEnemies;
     private static List<Entity> _bmParty;
     private static List<Entity> _bmAllEntities;
-    // private static IEnumerable<Entity> _bmActionOrder;
+    private static List<Entity> _bmActionOrder;
 
 
     // Constructor
-    public Combat(List<Entity> party, List<Entity> enemies)
+    public Combat(string name, List<Entity> party, List<Entity> enemies) : base(name)
     {
         _bmParty = party;
         _bmEnemies = enemies;
@@ -24,6 +24,10 @@ class Combat
     }
 
     // Methods
+    public List<Entity> GetEnemies()
+    {
+        return _bmEnemies;
+    }
     public static bool Fight()
     {
         bool end = false;
@@ -31,7 +35,19 @@ class Combat
         while(!end)
         {
             // Make Action Order
-            IEnumerable<Entity> _bmActionOrder = _bmAllEntities.OrderBy<Entity, TKey>(Entity => Entity.GetSpeed);
+            _bmActionOrder = bmMakeActionOrderList();
+            foreach(Entity entity in _bmActionOrder)
+            {
+                // Add if statement here to check that the player/someone from the party is acting
+                if(_bmParty.Contains(entity))
+                {
+                    entity.bmTakeAction(entity, _bmEnemies);
+                }
+                else
+                {
+                    entity.bmTakeAction(entity, _bmParty);
+                }
+            }
 
             // Check if Party is dead //Will have to change this to check for just the player if we add allies, otherwise it will work fine
             if(!bmIsAlive(_bmParty))
@@ -75,21 +91,29 @@ class Combat
 
     private static List<Entity> bmMakeActionOrderList()
     {
-        List<Entity> listCopy = _bmAllEntities;
+        List<Entity> listCopy = new List<Entity>(_bmAllEntities);
         List<Entity> ActionOrderList = new List<Entity>();
         while(ActionOrderList.Count < _bmAllEntities.Count)
         {
-            int maxSpeed = -1;
-            foreach(Entity entity in listCopy)
-            {
-                if(entity.GetSpeed() > maxSpeed)
-                {
-                    maxSpeed = entity.GetSpeed();
-                    Entity maxEntity = entity;
-                }
-            }
+            Entity maxEntity = bmFindFastest(listCopy);
             ActionOrderList.Add(maxEntity);
             listCopy.Remove(maxEntity);
         }
+        return ActionOrderList;
+    }
+
+    private static Entity bmFindFastest(List<Entity> entityList)
+    {
+        int maxSpeed = -1;
+        Entity returnEntity = null;
+        foreach(Entity entity in entityList)
+        {
+            if(entity.GetSpeed() > maxSpeed)
+            {
+                maxSpeed = entity.GetSpeed();
+                returnEntity = entity;
+            }
+        }
+        return returnEntity;
     }
 }

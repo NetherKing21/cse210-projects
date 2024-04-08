@@ -1,6 +1,9 @@
 public class Out
 {
-    /*
+    //Attributes
+    private static List<Player> classes = new List<Player> {new Player()};
+
+    //Methods
     public static void bmDisplayStartScreen()
     {
         string[] options = {"Load Game", "New Game", "Quit"};
@@ -11,13 +14,35 @@ public class Out
         }
     }
 
-    public static void bmDisplayPlayerActions(Player player)
+    public static void bmDisplayActions(List<Action> actions)
     {
+        int counter = 0;
         Console.WriteLine("What action would you like to take? ");
-        foreach()
+        foreach(Action action in actions)
         {
-            
+            counter++;
+            Console.WriteLine($" {counter}. {action.GetName()}");
         }
     }
-    */
+
+    public static void bmDisplayTargets(List<Entity> entities)
+    {
+        int counter = 0;
+        Console.WriteLine("Who would you like attack? ");
+        foreach(Entity entity in entities)
+        {
+            counter++;
+            Console.WriteLine($" {counter}. {entity.GetName()}");
+        }
+    }
+
+    public static void bmDisplayClasses()
+    {
+
+    }
+
+    public static void bmActionMessage(string message)
+    {
+        Console.WriteLine(message);
+    }
 }

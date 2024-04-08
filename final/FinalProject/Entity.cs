@@ -8,7 +8,7 @@ public abstract class Entity
     protected int _imSpeedStat;
     protected int _imArmorStat;
     protected int _imGold;
-    List<Action> _imActions = new List<Action>();
+    protected List<Action> _imActions = new List<Action>();
 
     // Class Constructors
     public Entity()
@@ -45,6 +45,10 @@ public abstract class Entity
     {
         return _imSpeedStat; 
     }
+    public List<Action> GetActionList()
+    {
+        return _imActions; 
+    }
 
     public void _ImTakeDamage(int damage)
     {
@@ -56,6 +60,6 @@ public abstract class Entity
         _imLevel = _imLevel + 1;
     }
 
-    public abstract void bmTakeAction();
+    public abstract void bmTakeAction(Entity user, List<Entity> targets);
 }
 
