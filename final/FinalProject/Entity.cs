@@ -45,6 +45,10 @@ public abstract class Entity
     {
         return _imSpeedStat; 
     }
+    public int GetGold()
+    {
+        return _imGold;
+    }
     public List<Action> GetActionList()
     {
         return _imActions; 

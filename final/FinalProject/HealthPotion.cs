@@ -10,15 +10,4 @@ public class HealthPotion : Item
         _imCost = 2;
         _imHealAmount = 10;
     }
-
-    // Class Methods
-    public override void ImBuyItem()
-    {
-        
-    }
-    public override void ImUseItem()
-    {
-
-    }
-
 }

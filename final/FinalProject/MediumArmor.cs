@@ -1,5 +1,5 @@
-public class MediumArmor : Item
-{
+//public class MediumArmor : Item
+//{
     // Class States
 
 
@@ -9,4 +9,4 @@ public class MediumArmor : Item
     // Class Methods
 
 
-}
+//}

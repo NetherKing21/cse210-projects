@@ -1,4 +1,4 @@
-public class UseItem : Action
+/*public class UseItem : Action
 {
     private Item _item;
 
@@ -11,4 +11,4 @@ public class UseItem : Action
     {
         _item.UseItem(_target);
     }
-}
+}*/
