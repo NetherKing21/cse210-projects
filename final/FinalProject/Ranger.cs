@@ -1,38 +1,45 @@
-public class Ranger : Player
+public class Ranger : Entity
 {
-    private int _akStat;
-    private string _startingWeapon;
-    private List<string> _startingGear;
-
+    // Class Constructors
     public Ranger() : base()
-    {
-        _akStat = 10; // Default d
-        _startingWeapon = "Bow and Arrows"; // Default 
-        _startingGear = new List<string> { "Leather Armor", "Health Potion", "Stamina Potion" }; // Default 
+    { 
+        _imName = "Ranger";
+        _imLevel = 1;
+        _imHealth = 15;
+        _imStrengthStat = 3;
+        _imSpeedStat = 3;
+        _imArmorStat = 2;
+        _imGold = 20;
+        // _imActions = new List<Action> { new RangedAttack() }; 
     }
 
-    public int Stat
+    // Class Methods
+    public override void _ImLevelUp()
     {
-        get { return _akStat; }
-        set { _akStat = value; }
+        if (_imLevel == 1)
+        {
+            _imName = "Archer";
+            _imLevel = 2;
+            _imHealth = 30;
+            _imStrengthStat = 4;
+            _imSpeedStat = 4;
+            _imArmorStat = 3;
+            _imGold = 50;
+        }
+        else if (_imLevel == 2)
+        {
+            _imName = "Sniper";
+            _imLevel = 3;
+            _imHealth = 45;
+            _imStrengthStat = 6;
+            _imSpeedStat = 6;
+            _imArmorStat = 4;
+            _imGold = 100;
+        }
     }
 
-    public string StartingWeapon
+    public override void bmTakeAction(Entity user, List<Entity> targets)
     {
-        get { return _startingWeapon; }
-        set { _startingWeapon = value; }
+        Console.WriteLine("The ranger takes action.");
     }
-
-    public List<string> StartingGear
-    {
-        get { return _startingGear; }
-    }
-
-    // public void ShootArrow(Entity target)
-    // {
-    //     // Placeholder logic for shooting an arrow
-    //     int damage = _akStat; // For simplicity, assume dexterity stat is directly added as damage
-    //     target.InTakeDamage(damage);
-    // }
-
 }
