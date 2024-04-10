@@ -85,6 +85,13 @@ class Program
                 Combat robberFight = new Combat("Robber Fight", party, enemies);
                 completedFights[2] = robberFight.Fight();
             }
+
+            //Check to see if all the fights are completed
+            if(bmCheckCompletion(completedFights))
+            {
+                Out.bmDisplayCompletionMessage();
+                quit = true;
+            }
         }
     }
 
@@ -95,21 +102,16 @@ class Program
         //Create player based on input and set to
     }
 
-    static void bmTestFight()
+    static bool bmCheckCompletion(List<bool> bools)
     {
-        Player player = new Player();
-        List<Entity> party = new List<Entity> {player};
-        Undead e1 = new Undead();
-        List<Entity> enemies = new List<Entity>{e1};
-        Combat test = new Combat("Test fight", party, enemies);
-        bool victory = test.Fight();
-        if(victory == true)
+        bool returnValue = true;
+        foreach(bool x in bools)
         {
-            Console.WriteLine("You won");
+            if(x == false)
+            {
+                returnValue = false;
+            }
         }
-        else
-        {
-            Console.WriteLine("you lost");
-        }
+        return returnValue;
     }
 }

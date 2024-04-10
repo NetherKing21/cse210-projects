@@ -8,7 +8,7 @@ public class Store : Event
     // Class Constructors
     public Store() : base("Store")
     {
-        _imItemsForSale.Add(new HealthPotion());
+        // _imItemsForSale.Add(new HealthPotion());
         //_imItemsForSale.Add(new SturdySword());
         //_imItemsForSale.Add(new MediumArmor());
     }

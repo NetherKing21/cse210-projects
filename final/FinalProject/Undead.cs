@@ -46,6 +46,7 @@ public class Undead : Entity
     public override void bmTakeAction(Entity user, List<Entity> targets)
     {
         Console.WriteLine("Boo! (Ineffective)");
+        Thread.Sleep(3000);
         //Chose a random number with the max number being the length of _imActions
 
         //Set random target from entities (should be the party list in Combat !!Combat need to be updated to change which list in given based on which entity is taking its action)

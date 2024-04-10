@@ -32,16 +32,18 @@ class Combat : Event
     {
         bool end = false;
         bool victory = false;
+        //Display combat start message
+        Out.bmStartCombatMessage();
+
         while(!end)
         {
-            //Display combat start message
-            
-            //Display Combat information
-
             // Make Action Order
             _bmActionOrder = bmMakeActionOrderList();
             foreach(Entity entity in _bmActionOrder)
             {
+                //Display Combat information
+                Out.bmDisplayCombat(_bmParty, _bmEnemies);
+
                 // Add if statement here to check that the player/someone from the party is acting
                 if(_bmParty.Contains(entity))
                 {
