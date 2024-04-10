@@ -5,6 +5,7 @@ public class Player : Entity
 {
     private List<string> _inventory;
     private string _weapon;
+    private string _armorSlot;
 
     public Player() : base()
     {

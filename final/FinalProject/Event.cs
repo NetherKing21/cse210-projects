@@ -1,3 +1,5 @@
+using System.Runtime;
+
 public abstract class Event
 {
     //Attributes
@@ -8,4 +10,7 @@ public abstract class Event
     {
         _eventName = name;
     }
+
+    //Methods
+    public abstract void bmEnterEvent();
 }

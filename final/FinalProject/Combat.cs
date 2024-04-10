@@ -5,18 +5,18 @@ using System.Net;
 class Combat : Event
 {
     // Attributes
-    private static List<Entity> _bmEnemies;
-    private static List<Entity> _bmParty;
-    private static List<Entity> _bmAllEntities;
-    private static List<Entity> _bmActionOrder;
+    private List<Entity> _bmEnemies;
+    private List<Entity> _bmParty;
+    private List<Entity> _bmAllEntities;
+    private List<Entity> _bmActionOrder;
 
 
     // Constructor
     public Combat(string name, List<Entity> party, List<Entity> enemies) : base(name)
     {
-        _bmParty = party;
-        _bmEnemies = enemies;
-        _bmAllEntities = party;
+        _bmParty = new List<Entity>(party);
+        _bmEnemies = new List<Entity>(enemies);
+        _bmAllEntities = new List<Entity>(party);
         foreach(Entity entity in _bmEnemies)
         {
             _bmAllEntities.Add(entity);
@@ -28,12 +28,16 @@ class Combat : Event
     {
         return _bmEnemies;
     }
-    public static bool Fight()
+    public bool Fight()
     {
         bool end = false;
         bool victory = false;
         while(!end)
         {
+            //Display combat start message
+            
+            //Display Combat information
+
             // Make Action Order
             _bmActionOrder = bmMakeActionOrderList();
             foreach(Entity entity in _bmActionOrder)
@@ -42,10 +46,14 @@ class Combat : Event
                 if(_bmParty.Contains(entity))
                 {
                     entity.bmTakeAction(entity, _bmEnemies);
+                    //Check to see if enemies have died
+                    //if they have remove from allentities list
                 }
                 else
                 {
                     entity.bmTakeAction(entity, _bmParty);
+                    //Check to see if player/allies have died
+                    //if they have remove from allentities list
                 }
             }
 
@@ -54,11 +62,13 @@ class Combat : Event
             {
                 victory = false;
                 end = true;
+                Console.WriteLine("Everyone in your party has died!");
             } // Check if enemy team is dead
             else if(!bmIsAlive(_bmEnemies))
             {
                 victory = true;
                 end = true;
+                Console.WriteLine("You have defected all the enemies.");
             }
         }
         return victory;
@@ -89,7 +99,7 @@ class Combat : Event
         return returnValue;
     }
 
-    private static List<Entity> bmMakeActionOrderList()
+    private List<Entity> bmMakeActionOrderList()
     {
         List<Entity> listCopy = new List<Entity>(_bmAllEntities);
         List<Entity> ActionOrderList = new List<Entity>();
@@ -115,5 +125,10 @@ class Combat : Event
             }
         }
         return returnEntity;
+    }
+
+    public override void bmEnterEvent()
+    {
+        Fight();
     }
 }

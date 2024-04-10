@@ -3,7 +3,7 @@ public class Bandito : Entity
     // Class States
 
     // Class Constructors
-    Bandito() : base()
+    public Bandito() : base()
     { 
             _imName = "Bandito";
             _imLevel = 1;
