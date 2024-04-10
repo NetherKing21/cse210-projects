@@ -94,7 +94,8 @@ class Program
         Console.WriteLine("Choose a player: ");
         Console.WriteLine("1. Warrior");
         Console.WriteLine("2. Ranger");
-        int userInput = In.bmGetUserInput(2);
+        Console.WriteLine("3. Aayush");
+        int userInput = In.bmGetUserInput(3);
 
         if (userInput == 1)
         {
@@ -107,6 +108,12 @@ class Program
             Ranger player = new Ranger();
             party.Add(player);
             Console.WriteLine("Ranger selected.");
+        }
+        else if (userInput == 3)
+        {
+            Aayush player = new Aayush();
+            party.Add(player);
+            Console.WriteLine("Aayush selected.");
         }
         else
         {
