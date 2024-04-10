@@ -8,9 +8,6 @@ public class Store : Event
     // Class Constructors
     public Store(List<Player> party) : base("Store")
     {
-<<<<<<< HEAD
-        // _imItemsForSale.Add(new HealthPotion());
-=======
         // Copies party list to the store
         foreach (Player player in party)
         {
@@ -19,7 +16,6 @@ public class Store : Event
 
         // Items in the store
         _imItemsForSale.Add(new HealthPotion());
->>>>>>> 97faca666af7e24e7408cd5a421e4584a412a614
         //_imItemsForSale.Add(new SturdySword());
         _imItemsForSale.Add(new MediumArmor());
     }
