@@ -3,19 +3,19 @@ using System.Reflection.Metadata;
 
 public class Player : Entity
 {
-    private List<string> _inventory;
+    private List<Item> _inventory;
     private string _weapon;
     private string _armorSlot;
 
     public Player() : base()
     {
         _imName = "Nonspecific Player";
-        _inventory = new List<string>();
+        _inventory = new List<Item>();
         _weapon = "Fists"; // Default weapon
         _imActions = new List<Action> {new WeaponlessAttack()};
     }
 
-    public List<string> Inventory
+    public List<Item> Inventory
     {
         get { return _inventory; }
     }
@@ -26,12 +26,12 @@ public class Player : Entity
         set { _weapon = value; }
     }
 
-    public void AddToInventory(string item)
+    public void AddToInventory(Item item)
     {
         _inventory.Add(item);
     }
 
-    public void RemoveFromInventory(string item)
+    public void RemoveFromInventory(Item item)
     {
         _inventory.Remove(item);
     }

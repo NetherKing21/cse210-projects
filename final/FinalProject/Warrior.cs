@@ -1,38 +1,45 @@
-public class Warrior : Player
+public class Warrior : Entity
 {
-    private int _akStrengthStat;
-    private string _startingWeapon;
-    private List<string> _startingGear;
-
+    // Class Constructors
     public Warrior() : base()
-    {
-        _akStrengthStat = 10; // Default 
-        _startingWeapon = "Sword"; // Default 
-        _startingGear = new List<string> { "Armor", "Health Potion", "Mana Potion" }; // Default starting gear
+    { 
+        _imName = "Warrior";
+        _imLevel = 1;
+        _imHealth = 20;
+        _imStrengthStat = 5;
+        _imSpeedStat = 2;
+        _imArmorStat = 5;
+        _imGold = 30;
+        // _imActions = new List<Action> { new MeleeAttack() }; 
     }
 
-    public int StrengthStat
+    // Class Methods
+    public override void _ImLevelUp()
     {
-        get { return _akStrengthStat; }
-        set { _akStrengthStat = value; }
+        if (_imLevel == 1)
+        {
+            _imName = "Knight";
+            _imLevel = 2;
+            _imHealth = 40;
+            _imStrengthStat = 8;
+            _imSpeedStat = 3;
+            _imArmorStat = 8;
+            _imGold = 60;
+        }
+        else if (_imLevel == 2)
+        {
+            _imName = "Champion";
+            _imLevel = 3;
+            _imHealth = 60;
+            _imStrengthStat = 12;
+            _imSpeedStat = 4;
+            _imArmorStat = 12;
+            _imGold = 120;
+        }
     }
 
-    public string StartingWeapon
+    public override void bmTakeAction(Entity user, List<Entity> targets)
     {
-        get { return _startingWeapon; }
-        set { _startingWeapon = value; }
+        Console.WriteLine("The warrior takes action.");
     }
-
-    public List<string> StartingGear
-    {
-        get { return _startingGear; }
-    }
-
-    // public void Attack(Entity target)
-    // {
-    //     // Placeholder logic for attacking
-    //     int damage = _akStrengthStat; // For simplicity, assume strength stat is directly added as damage
-    //     target.TakeDamage(damage);
-    // }
-
 }

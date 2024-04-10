@@ -1,33 +1,21 @@
-public class Item
+public abstract class Item 
 {
-    // Attributes
-    private string _name;
-    private string _description;
+    // Class States
+    protected string _imItemName;
+    protected int _imCost;
 
-    // Constructors
-    public Item(string name, string description)
-    {
-        _name = name;
-        _description = description;
-    }
+    // Class Constructor
+    public Item () {}
 
-    // Properties
-    public string Name
+    // Class Methods
+    public string ImGetName()
     {
-        get { return _name; }
-        set { _name = value; }
+        return _imItemName;
     }
-
-    public string Description
+    public int ImGetCost()
     {
-        get { return _description; }
-        set { _description = value; }
+        return _imCost;
     }
-
-    // Methods 
-    public virtual void UseItem(Entity target)
-    {
-        // Placeholder 
-        Console.WriteLine($"Using {_name} on {target.GetName()}."); // Example
-    }
+    public abstract void ImBuyItem ();
+    public abstract void ImUseItem();
 }
