@@ -41,7 +41,7 @@ public class Beast : Entity
         }
     }
 
-    public override void bmTakeAction(Entity user, List<Entity> targets)
+    public override void bmTakeAction(Entity user, List<Player> imParty, List<Entity> targets)
     {
         Console.WriteLine("there's just a good boy");
         //Chose a random number with the max number being the length of _imActions

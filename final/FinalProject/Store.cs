@@ -1,16 +1,23 @@
 public class Store : Event 
 {
     // Class States
-    private static List<Player> _imParty;
+    private static List<Player> _imParty = new List<Player>();
     private static Player _imShopper;
-    private static List<Item> _imItemsForSale;
+    private static List<Item> _imItemsForSale = new List<Item>();
 
     // Class Constructors
-    public Store() : base("Store")
+    public Store(List<Player> party) : base("Store")
     {
+        // Copies party list to the store
+        foreach (Player player in party)
+        {
+            _imParty.Add(player); 
+        }
+
+        // Items in the store
         _imItemsForSale.Add(new HealthPotion());
         //_imItemsForSale.Add(new SturdySword());
-        //_imItemsForSale.Add(new MediumArmor());
+        _imItemsForSale.Add(new MediumArmor());
     }
 
     // Class Methods
@@ -18,28 +25,30 @@ public class Store : Event
     {
         // Sets initial shopper
         ImGetShopper();
+        Console.WriteLine();
 
         // Runs shop menu
-        int userChoice = -1;
+        string userChoice = "";
 
-        while (userChoice != 3)
+        while (userChoice != "3")
         {
             // Prints Shop menu
-            Console.WriteLine($"You have {_imShopper.GetGold} Gold");
+            Console.WriteLine($"You have {_imShopper.GetGold()} Gold");
             Console.WriteLine("1. Buy items");
             Console.WriteLine("2. Change shopper");
             Console.WriteLine("3. Leave shop");
-            Console.Write("What would you like to do?");
-            userChoice = Console.Read();
+            Console.WriteLine("What would you like to do?");
+            Console.Write("> ");
+            userChoice = Console.ReadLine();
 
             // Decides what to do
-            if (userChoice == 1)
+            if (userChoice == "1")
             {
                 ImShopItems();
-            } else if (userChoice == 2)
+            } else if (userChoice == "2")
             {
                 ImGetShopper();
-            } else if (userChoice == 3 )
+            } else if (userChoice == "3")
             {
                 // Pass
             } else 
@@ -56,8 +65,9 @@ public class Store : Event
             Console.WriteLine($"{_imParty.IndexOf(player) + 1}. {player.GetName()}");
         }
 
-        Console.Write("Who is shopping");
-        int shopperIndex = Console.Read() - 1;
+        Console.WriteLine("Who is shopping: ");
+        Console.Write("> ");
+        int shopperIndex = int.Parse(Console.ReadLine()) - 1;
         _imShopper = _imParty.ElementAt(shopperIndex);
     }
     // List items
@@ -68,17 +78,28 @@ public class Store : Event
             Console.WriteLine($"{_imItemsForSale.IndexOf(item) + 1}. {item.ImGetName()}");
         }
 
-        Console.Write("What would you like to buy");
-        int itemIndex = Console.Read() - 1;
+        Console.WriteLine("What would you like to buy?");
+        Console.Write("> ");
+        int itemIndex = int.Parse(Console.ReadLine()) - 1;
         ImBuyItem(itemIndex);
     }
 
     // Buy an item
     public void ImBuyItem(int itemIndex)
     {
-        if (_imShopper.GetGold() >= _imItemsForSale.ElementAt(itemIndex).ImGetCost())
+        int cost = _imItemsForSale.ElementAt(itemIndex).ImGetCost();
+        if (_imShopper.GetGold() >= cost)
         {
-            _imShopper.AddToInventory(_imItemsForSale.ElementAt(itemIndex));
+            if(itemIndex == 0)
+            {
+                _imShopper.ImUseGold(cost);
+                _imShopper.AddToInventory(new HealthPotion());
+            } 
+            else if (itemIndex == 1)
+            {
+                _imShopper.ImUseGold(cost);
+                _imShopper.ArmorUp(new MediumArmor());
+            }
         } else 
         {
             Console.WriteLine("Insufficient Gold");

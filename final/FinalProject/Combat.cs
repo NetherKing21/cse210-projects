@@ -9,12 +9,14 @@ class Combat : Event
     private List<Entity> _bmParty;
     private List<Entity> _bmAllEntities;
     private List<Entity> _bmActionOrder;
+    private List<Player> _imParty;
 
 
     // Constructor
-    public Combat(string name, List<Entity> party, List<Entity> enemies) : base(name)
+    public Combat(string name, List<Entity> party, List<Player> imParty, List<Entity> enemies) : base(name)
     {
         _bmParty = new List<Entity>(party);
+        _imParty = new List<Player>(imParty);
         _bmEnemies = new List<Entity>(enemies);
         _bmAllEntities = new List<Entity>(party);
         foreach(Entity entity in _bmEnemies)
@@ -45,13 +47,13 @@ class Combat : Event
                 // Add if statement here to check that the player/someone from the party is acting
                 if(_bmParty.Contains(entity))
                 {
-                    entity.bmTakeAction(entity, _bmEnemies);
+                    entity.bmTakeAction(entity, _imParty, _bmEnemies);
                     //Check to see if enemies have died
                     //if they have remove from allentities list
                 }
                 else
                 {
-                    entity.bmTakeAction(entity, _bmParty);
+                    entity.bmTakeAction(entity, _imParty, _bmParty);
                     //Check to see if player/allies have died
                     //if they have remove from allentities list
                 }

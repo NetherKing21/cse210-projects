@@ -22,7 +22,7 @@ public class WeaponlessAttack : Action
         Out.bmActionMessage(_description);
     }
 
-    public override void SetTarget(List<Entity> entities)
+    public override void SetTarget(List<Entity> entities , List<Player> imParty)
     {
         Out.bmDisplayTargets(entities);
         int ui = In.bmGetUserInput(entities.Count()) - 1;

@@ -16,6 +16,9 @@ public abstract class Item
     {
         return _imCost;
     }
-    public abstract void ImBuyItem ();
-    public abstract void ImUseItem();
+    public virtual int ImDamageAmount()
+    {
+        // Only used by consumable items
+        return 0;
+    }
 }

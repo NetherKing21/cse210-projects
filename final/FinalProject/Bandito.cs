@@ -39,7 +39,7 @@ public class Bandito : Entity
         }
     }
 
-    public override void bmTakeAction(Entity user, List<Entity> targets)
+    public override void bmTakeAction(Entity user, List<Player> imParty, List<Entity> targets)
     {
         Console.WriteLine("this dude did nothing");
         //Chose a random number with the max number being the length of _imActions

@@ -11,16 +11,10 @@ public class HealthPotion : Item
         _imHealAmount = 10;
     }
 
-      // Class Methods
-    public override void ImBuyItem()
+    // Class Methods
+    public override int ImDamageAmount()
     {
-        // Implement logic for buying the health potion
-        Console.WriteLine($"Bought {_imItemName} for {_imCost} gold.");
-    }
-
-    public override void ImUseItem()
-    {
-        // Implement logic for using the health potion
-        Console.WriteLine($"Used {_imItemName}. Restored {_imHealAmount} health.");
+        // Is a negative number to do negative damage/heal.
+        return (-1) * _imHealAmount;
     }
 }

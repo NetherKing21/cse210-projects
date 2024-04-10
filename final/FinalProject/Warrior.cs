@@ -38,7 +38,7 @@ public class Warrior : Entity
         }
     }
 
-    public override void bmTakeAction(Entity user, List<Entity> targets)
+    public override void bmTakeAction(Entity user, List<Player> imParty, List<Entity> targets)
     {
         Console.WriteLine("The warrior takes action.");
     }
