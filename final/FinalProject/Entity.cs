@@ -64,6 +64,6 @@ public abstract class Entity
         _imLevel = _imLevel + 1;
     }
 
-    public abstract void bmTakeAction(Entity user, List<Entity> targets);
+    public abstract void bmTakeAction(Entity user, List<Player> imParty, List<Entity> targets);
 }
 

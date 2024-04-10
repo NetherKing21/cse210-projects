@@ -23,7 +23,7 @@ public class WeaponlessAttack : Action
         Thread.Sleep(3000);
     }
 
-    public override void SetTarget(List<Entity> entities)
+    public override void SetTarget(List<Entity> entities , List<Player> imParty)
     {
         Out.bmDisplayTargets(entities);
         int ui = In.bmGetUserInput(entities.Count()) - 1;

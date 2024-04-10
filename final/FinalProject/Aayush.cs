@@ -1,16 +1,16 @@
-public class Warrior : Entity
+public class Aayush : Entity
 {
     // Class Constructors
-    public Warrior() : base()
+    public Aayush() : base()
     { 
-        _imName = "Warrior";
+        _imName = "Aayush";
         _imLevel = 1;
         _imHealth = 20;
         _imStrengthStat = 5;
         _imSpeedStat = 2;
         _imArmorStat = 5;
         _imGold = 30;
-        // _imActions = new List<Action> { new MeleeAttack() }; 
+        // _imActions = new List<Action> { new BigAttack() }; 
     }
 
     // Class Methods
@@ -40,6 +40,6 @@ public class Warrior : Entity
 
     public override void bmTakeAction(Entity user, List<Player> imParty, List<Entity> targets)
     {
-        Console.WriteLine("The warrior takes action.");
+        Console.WriteLine("Aayush takes action.");
     }
 }
