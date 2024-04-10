@@ -127,8 +127,8 @@ class Combat : Event
         return returnEntity;
     }
 
-    public override void bmEnterEvent()
-    {
-        Fight();
-    }
+    // public override void bmEnterEvent()
+    // {
+    //     Fight();
+    // }
 }

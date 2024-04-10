@@ -12,5 +12,5 @@ public abstract class Event
     }
 
     //Methods
-    public abstract void bmEnterEvent();
+    // public abstract void bmEnterEvent();
 }
