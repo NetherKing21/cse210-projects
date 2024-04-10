@@ -28,6 +28,7 @@ class Program
                 // Start/Create New Game
                 player = new Player(); //Replace later to get different player classes and return the default
                 party.Add(player);
+                bmCreateNewPlayer(party);
                                                 //Undead, Robber, Beast
                 completedFights = new List<bool> {false, false, false};
                 bmMainGame(party, completedFights);
@@ -88,11 +89,31 @@ class Program
         }
     }
 
-    static void bmCreateNewPlayer()
+   static void bmCreateNewPlayer(List<Entity> party)
     {
-        //Display options for player
-        //Get user input
-        //Create player based on input and set to
+        Console.WriteLine("Choose a player: ");
+        Console.WriteLine("1. Warrior");
+        Console.WriteLine("2. Ranger");
+        int userInput = In.bmGetUserInput(2);
+
+        if (userInput == 1)
+        {
+            Warrior player = new Warrior();
+            party.Add(player);
+            Console.WriteLine("Warrior selected.");
+        }
+        else if (userInput == 2)
+        {
+            Ranger player = new Ranger();
+            party.Add(player);
+            Console.WriteLine("Ranger selected.");
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Defaulting to Warrior.");
+            Warrior player = new Warrior();
+            party.Add(player);
+        }
     }
 
     static void bmTestFight()
