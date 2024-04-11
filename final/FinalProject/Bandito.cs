@@ -12,6 +12,7 @@ public class Bandito : Entity
             _imSpeedStat = 2;
             _imArmorStat = 2;
             _imGold = 10;
+            _imActions = new List<Action> {new WeaponlessAttack()};
     }
 
     // Class Methods
@@ -24,16 +25,16 @@ public class Bandito : Entity
             _imName = "Mob Boss";
             _imLevel = 2;
             _imHealth = 25;
-            _imStrengthStat = 2;
+            _imStrengthStat = 7;
             _imSpeedStat = 2;
-            _imArmorStat = 2;
+            _imArmorStat = 3;
             _imGold = 50;
 
         } else if (_imLevel == 2) {
             _imName = "IRS";
             _imLevel = 3;
             _imHealth = 50;
-            _imStrengthStat = 5;
+            _imStrengthStat = 10;
             _imSpeedStat = 10;
             _imArmorStat = 5;
             _imGold = 500;
@@ -43,11 +44,17 @@ public class Bandito : Entity
     public override void bmTakeAction(Entity user, List<Player> imParty, List<Entity> targets)
     {
         Console.WriteLine("this dude did nothing");
-        Thread.Sleep(2000);
+        Console.WriteLine($"The {_imName} takes action.");
         //Chose a random number with the max number being the length of _imActions
+        Random random = new Random();
+        int randomInt = random.Next(_imActions.Count());
 
-        //Set random target from entities (should be the party list in Combat !!Combat need to be updated to change which list in given based on which entity is taking its action)
-
-        //Call action.effect
+        //Set user
+        _imActions[randomInt].SetUser(user, imParty);
+        // Set target
+        _imActions[randomInt].SetTarget(targets, imParty);
+        // Call that action effect
+        _imActions[randomInt].Effect();
+        Thread.Sleep(2000);
     }
 }

@@ -9,9 +9,9 @@ public class Undead : Entity
         _imName = "Ghost";
         _imLevel = 1;
         _imHealth = 2;
-        _imStrengthStat = 1;
+        _imStrengthStat = 4;
         _imSpeedStat = 5;
-        _imArmorStat = 2;
+        _imArmorStat = 1;
         _imGold = 0;
         _imActions = new List<Action> {new WeaponlessAttack()};
 
@@ -27,7 +27,7 @@ public class Undead : Entity
             _imName = "Zambie";
             _imLevel = 2;
             _imHealth = 10;
-            _imStrengthStat = 2;
+            _imStrengthStat = 10;
             _imSpeedStat = 2;
             _imArmorStat = 2;
             _imGold = 1;
@@ -35,10 +35,10 @@ public class Undead : Entity
         } else if (_imLevel == 2) {
             _imName = "Spooky Octapus";
             _imLevel = 3;
-            _imHealth = 100;
-            _imStrengthStat = 5;
+            _imHealth = 70;
+            _imStrengthStat = 15;
             _imSpeedStat = 1;
-            _imArmorStat = 20;
+            _imArmorStat = 5;
             _imGold = 10;
 
         }
@@ -47,12 +47,18 @@ public class Undead : Entity
     public override void bmTakeAction(Entity user, List<Player> imParty, List<Entity> targets)
     {
         Console.WriteLine("Boo! (Ineffective)");
-        Thread.Sleep(2000);
+        Console.WriteLine($"The {_imName} takes action.");
         //Chose a random number with the max number being the length of _imActions
+        Random random = new Random();
+        int randomInt = random.Next(_imActions.Count());
 
-        //Set random target from entities (should be the party list in Combat !!Combat need to be updated to change which list in given based on which entity is taking its action)
-
-        //Call action.effect
+        //Set user
+        _imActions[randomInt].SetUser(user, imParty);
+        // Set target
+        _imActions[randomInt].SetTarget(targets, imParty);
+        // Call that action effect
+        _imActions[randomInt].Effect();
+        Thread.Sleep(2000);
     }
 
 }

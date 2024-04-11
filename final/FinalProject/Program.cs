@@ -10,15 +10,16 @@ class Program
     {
         bool quitGame = false;
 
-        //Game Data
-        Player player;
-        List<Entity> party = new List<Entity> {};
-        // Ians list of players so the store works
-        List<Player> imParty = new List<Player>();
-        List<bool> completedFights;
 
         while (!quitGame)
         {
+            //Game Data
+            Player player;
+            List<Entity> party = new List<Entity> {};
+            // Ians list of players so the store works
+            List<Player> imParty = new List<Player>();
+            List<bool> completedFights;
+            
             Out.bmDisplayStartScreen();
             int userInput = In.bmGetUserInput(3);
             if(userInput == 1)
