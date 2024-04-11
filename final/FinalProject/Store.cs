@@ -11,7 +11,7 @@ public class Store : Event
         // Copies party list to the store
         foreach (Player player in party)
         {
-            _imParty.Add(player); 
+            _imParty.Add(player);  
         }
 
         // Items in the store

@@ -1,4 +1,4 @@
-public class Warrior : Entity
+public class Warrior : Player
 {
     // Class Constructors
     public Warrior() : base()
@@ -10,12 +10,14 @@ public class Warrior : Entity
         _imSpeedStat = 2;
         _imArmorStat = 5;
         _imGold = 30;
-        // _imActions = new List<Action> { new MeleeAttack() }; 
+        _imActions = new List<Action> {new WeaponlessAttack(), new UseItem()};
     }
 
     // Class Methods
     public override void _ImLevelUp()
     {
+        //Gain a level
+        //Update Stats
         if (_imLevel == 1)
         {
             _imName = "Knight";
@@ -40,6 +42,16 @@ public class Warrior : Entity
 
     public override void bmTakeAction(Entity user, List<Player> imParty, List<Entity> targets)
     {
-        Console.WriteLine("The warrior takes action.");
+        Console.WriteLine($"The {_imName} takes action.");
+        // Display players actions
+        Out.bmDisplayActions(_imActions);
+        // Get users input
+        int ui = In.bmGetUserInput(_imActions.Count()) - 1;
+        //Set user
+        _imActions[ui].SetUser(user, imParty);
+        // Set target
+        _imActions[ui].SetTarget(targets, imParty);
+        // Call that action effect
+        _imActions[ui].Effect();
     }
 }

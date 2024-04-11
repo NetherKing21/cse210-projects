@@ -64,7 +64,7 @@ public class Out
         Console.Clear();
         Console.WriteLine("You have entered into a fight!");
         Console.WriteLine("Defeat all enemies to win");
-        Thread.Sleep(3000);
+        Thread.Sleep(2000);
     }
 
     public static void bmDisplayCombat(List<Entity> party, List<Entity> enemies)
@@ -87,6 +87,6 @@ public class Out
         Console.Clear();
         Console.WriteLine("Congratulations! You have completed the Random Adventure Game!");
         Console.WriteLine("You now have the ULTIMATE BRAGGING RIGHTS!!!");
-        Thread.Sleep(5000);
+        Thread.Sleep(3500);
     }
 }

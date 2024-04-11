@@ -34,6 +34,35 @@ class Combat : Event
     {
         bool end = false;
         bool victory = false;
+
+        //Find Highest Level of the Party
+        int maxLevel = 0;
+        foreach(Player player in _bmParty)
+        {
+            if(player.GetLevel() > maxLevel)
+            {
+                maxLevel = player.GetLevel();
+            }
+        }
+
+        //Set Level up Enemies to match the Highest Level
+        if(maxLevel > 1)
+        {
+            foreach(Entity entity in _bmEnemies)
+            {
+                entity._ImLevelUp();
+            }
+        }
+
+        if(maxLevel > 2)
+        {
+            foreach(Entity entity in _bmEnemies)
+            {
+                entity._ImLevelUp();
+            }
+        }
+
+
         //Display combat start message
         Out.bmStartCombatMessage();
 
@@ -67,12 +96,18 @@ class Combat : Event
                 victory = false;
                 end = true;
                 Console.WriteLine("Everyone in your party has died!");
+                Thread.Sleep(1000);
             } // Check if enemy team is dead
             else if(!bmIsAlive(_bmEnemies))
             {
                 victory = true;
                 end = true;
                 Console.WriteLine("You have defected all the enemies.");
+                Thread.Sleep(1000);
+                foreach(Player player in _bmParty)
+                {
+                    player._ImLevelUp();
+                }
             }
         }
         return victory;

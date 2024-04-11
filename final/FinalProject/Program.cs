@@ -29,10 +29,9 @@ class Program
             else if (userInput == 2)
             {
                 // Start/Create New Game
-                player = new Player(); //Replace later to get different player classes and return the default
+                player = bmCreateNewPlayer();
                 party.Add(player);
                 imParty.Add(player);
-                bmCreateNewPlayer(party);
                                                 //Undead, Robber, Beast
                 completedFights = new List<bool> {false, false, false};
                 bmMainGame(party, imParty, completedFights);
@@ -102,7 +101,7 @@ class Program
         }
     }
 
-   static void bmCreateNewPlayer(List<Entity> party)
+   static Player bmCreateNewPlayer()
     {
         Console.WriteLine("Choose a player: ");
         Console.WriteLine("1. Warrior");
@@ -113,26 +112,23 @@ class Program
         if (userInput == 1)
         {
             Warrior player = new Warrior();
-            party.Add(player);
             Console.WriteLine("Warrior selected.");
+            Thread.Sleep(1000);
+            return player;
         }
         else if (userInput == 2)
         {
             Ranger player = new Ranger();
-            party.Add(player);
             Console.WriteLine("Ranger selected.");
-        }
-        else if (userInput == 3)
-        {
-            Aayush player = new Aayush();
-            party.Add(player);
-            Console.WriteLine("Aayush selected.");
+            Thread.Sleep(1000);
+            return player;
         }
         else
         {
-            Console.WriteLine("Invalid input. Defaulting to Warrior.");
-            Warrior player = new Warrior();
-            party.Add(player);
+            Aayush player = new Aayush();
+            Console.WriteLine("Aayush selected.");
+            Thread.Sleep(1000);
+            return player;
         }
     }
 

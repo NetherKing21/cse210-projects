@@ -20,7 +20,7 @@ public class WeaponlessAttack : Action
         }
         _description = $"{_user.GetName()} punched {_target[0].GetName()}";
         Out.bmActionMessage(_description);
-        Thread.Sleep(3000);
+        Thread.Sleep(2000);
     }
 
     public override void SetTarget(List<Entity> entities , List<Player> imParty)

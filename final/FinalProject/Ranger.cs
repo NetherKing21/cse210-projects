@@ -1,4 +1,4 @@
-public class Ranger : Entity
+public class Ranger : Player
 {
     // Class Constructors
     public Ranger() : base()
@@ -10,12 +10,15 @@ public class Ranger : Entity
         _imSpeedStat = 3;
         _imArmorStat = 2;
         _imGold = 20;
-        // _imActions = new List<Action> { new RangedAttack() }; 
+        _imActions = new List<Action> {new WeaponlessAttack(), new UseItem()};
     }
 
     // Class Methods
     public override void _ImLevelUp()
     {
+        //Gain a level
+
+        //Update Stats
         if (_imLevel == 1)
         {
             _imName = "Archer";
@@ -40,6 +43,16 @@ public class Ranger : Entity
 
     public override void bmTakeAction(Entity user, List<Player> imParty, List<Entity> targets)
     {
-        Console.WriteLine("The ranger takes action.");
+        Console.WriteLine($"The {_imName} takes action.");
+        // Display players actions
+        Out.bmDisplayActions(_imActions);
+        // Get users input
+        int ui = In.bmGetUserInput(_imActions.Count()) - 1;
+        //Set user
+        _imActions[ui].SetUser(user, imParty);
+        // Set target
+        _imActions[ui].SetTarget(targets, imParty);
+        // Call that action effect
+        _imActions[ui].Effect();
     }
 }

@@ -3,11 +3,12 @@ using System.Reflection.Metadata;
 
 public class Player : Entity
 {
+    //Attributes
     private List<Item> _inventory;
     private string _weapon;
     private string _armorSlot;
 
-
+    //Constructor
     public Player() : base()
     {
         _imName = "Nonspecific Player";
@@ -16,6 +17,12 @@ public class Player : Entity
         // _imSpeedStat = 100; //Make the player fast!!!!
         _imActions = new List<Action> {new WeaponlessAttack(), new UseItem()};
         _imGold = 30;
+    }
+
+    //Methods
+    public int GetLevel()
+    {
+        return _imLevel;
     }
 
     public List<Item> Inventory

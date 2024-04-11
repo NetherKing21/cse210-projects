@@ -19,6 +19,7 @@ public class Beast : Entity
     public override void _ImLevelUp()
     {
         // Finds the current level and raises it.
+        
         // This could be changed from preset values to math later.
         if (_imLevel == 1) {
             _imName = "Scary Doggo";
@@ -44,7 +45,7 @@ public class Beast : Entity
     public override void bmTakeAction(Entity user, List<Player> imParty, List<Entity> targets)
     {
         Console.WriteLine("there's just a good boy");
-        Thread.Sleep(3000);
+        Thread.Sleep(2000);
         //Chose a random number with the max number being the length of _imActions
 
         //Set random target from entities (should be the party list in Combat !!Combat need to be updated to change which list in given based on which entity is taking its action)
