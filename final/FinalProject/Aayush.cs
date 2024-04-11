@@ -16,9 +16,13 @@ public class Aayush : Entity
     // Class Methods
     public override void _ImLevelUp()
     {
+        //Gain a level
+        _imLevel++;
+
+        //Update Stats
         if (_imLevel == 1)
         {
-            _imName = "Knight";
+            _imName = "Aayush 2.0";
             _imLevel = 2;
             _imHealth = 40;
             _imStrengthStat = 8;
@@ -28,7 +32,7 @@ public class Aayush : Entity
         }
         else if (_imLevel == 2)
         {
-            _imName = "Champion";
+            _imName = "Ultimate Aayush";
             _imLevel = 3;
             _imHealth = 60;
             _imStrengthStat = 12;
